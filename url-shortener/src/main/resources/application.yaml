@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI}
-      database: nombreDeTuBaseDeDatos
+      database: url-manager
   application:
     name: url-shortener-service
   kafka:
@@ -13,7 +13,7 @@ server:
   ssl:
     enabled: true
     key-store: classpath:microservice-keystore.jks
-    key-store-password: Abcde1234
+    key-store-password: ${KEY-STORE}
     key-alias: microservice
 
 

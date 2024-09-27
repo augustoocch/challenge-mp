@@ -17,16 +17,23 @@ public class UrlManagementServiceImpl implements UrlManagementService {
             this.repository = repository;
         }
 
-        public Mono<ShortenedUrl> createShortenedUrl(String originalUrl) {
-            ShortenedUrl shortenedUrl = new ShortenedUrl();
-            shortenedUrl.setOriginalUrl(originalUrl);
-            shortenedUrl.setShortUrl(generateShortUrl());
-            shortenedUrl.setEnabled(true);
-            shortenedUrl.setCreatedAt(LocalDateTime.now());
-            shortenedUrl.setUpdatedAt(LocalDateTime.now());
-            shortenedUrl.setAccessCount(0);
-            return repository.save(shortenedUrl);
-        }
+    public Mono<ShortenedUrl> createShortenedUrl(String originalUrl) {
+        return repository.findByOriginalUrl(originalUrl)
+                .switchIfEmpty(
+                        Mono.defer(() -> createNewShortenedUrl(originalUrl).flatMap(repository::save))
+                );
+    }
+
+    private Mono<ShortenedUrl> createNewShortenedUrl(String originalUrl) {
+        ShortenedUrl url = new ShortenedUrl();
+        url.setOriginalUrl(originalUrl);
+        url.setShortUrl(generateShortUrl());
+        url.setAccessCount(0);
+        url.setCreatedAt(LocalDateTime.now());
+        url.setUpdatedAt(LocalDateTime.now());
+        url.setEnabled(true);
+        return Mono.just(url);
+    }
 
         public Mono<ShortenedUrl> getShortenedUrl(String shortUrl) {
             return repository.findByShortUrl(shortUrl)

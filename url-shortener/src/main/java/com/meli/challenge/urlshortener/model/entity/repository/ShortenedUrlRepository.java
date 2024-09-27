@@ -6,4 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface ShortenedUrlRepository extends ReactiveMongoRepository<ShortenedUrl, String> {
     Mono<ShortenedUrl> findByShortUrl(String shortUrl);
+    Mono<ShortenedUrl> findByOriginalUrl(String originalUrl);
 }

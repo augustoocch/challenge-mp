@@ -38,7 +38,7 @@ public class JwtAuthenticationFilter implements WebFilter {
             if (jwtUtil.validateToken(jwt)) {
                 String username = jwtUtil.extractUsername(jwt);;
 
-                // Crear un UserDetails dummy
+                // It creates a Dummy UserDetails
                 UserDetails userDetails = User.withUsername(username)
                         .password("")
                         .authorities("ROLE_USER")

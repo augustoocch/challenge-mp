@@ -1,0 +1,22 @@
+spring:
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI}
+      database: nombreDeTuBaseDeDatos
+  application:
+    name: url-shortener-service
+  kafka:
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 9000
+  ssl:
+    enabled: true
+    key-store: classpath:microservice-keystore.jks
+    key-store-password: Abcde1234
+    key-alias: microservice
+
+
+logging:
+  level:
+    root: INFO

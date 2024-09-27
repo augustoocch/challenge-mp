@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          use-insecure-trust-manager: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_UNIQUE
+      routes:
+        - id: url-shortener-service
+          uri: ${URL_SHORTENER_SERVICE_URL}
+          predicates:
+            - Path=/management/**
+          filters: []
+            #- AddRequestHeader=Host, localhost:9000
+            #- AddRequestHeader=Accept, application/json
+            #- AddRequestHeader=Content-Type, application/json
+
+server:
+  port: 8080
+  ssl:
+    key-store: classpath:gateway-keystore.jks
+    key-store-password: Abcde1234
+    key-alias: gateway
+
+logging:
+  level:
+    root: INFO

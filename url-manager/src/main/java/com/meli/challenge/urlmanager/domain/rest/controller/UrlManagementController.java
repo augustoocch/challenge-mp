@@ -37,14 +37,14 @@ public class UrlManagementController {
     }
 
     @PatchMapping("${endpoint.url.management.enable}")
-    public Mono<ResponseEntity<Void>> toggleUrl(@PathVariable String id) {
-        return service.toggleUrl(id)
+    public Mono<ResponseEntity<Void>> toggleUrl(@RequestParam String id) {
+        return service.enableUrl(id)
                 .then(Mono.just(ResponseEntity.ok().build()));
     }
 
     @PatchMapping("${endpoint.url.management.disable}")
-    public Mono<ResponseEntity<Void>> disableUrl(@PathVariable String id) {
-        return service.toggleUrl(id)
+    public Mono<ResponseEntity<Void>> disableUrl(@RequestParam String id) {
+        return service.disableUrl(id)
                 .then(Mono.just(ResponseEntity.ok().build()));
     }
 }

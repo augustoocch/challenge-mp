@@ -58,10 +58,18 @@ public class UrlManagementServiceImpl implements UrlManagementService {
                 });
     }
 
-    public Mono<Void> toggleUrl(String id) {
-        return repository.findById(id)
+    public Mono<Void> disableUrl(String shortUrl) {
+        return repository.findByShortUrl(shortUrl)
                 .flatMap(url -> {
-                    url.setEnabled(!url.isEnabled());
+                    url.setEnabled(false);
+                    return repository.save(url);
+                }).then();
+    }
+
+    public Mono<Void> enableUrl(String shortUrl) {
+        return repository.findByShortUrl(shortUrl)
+                .flatMap(url -> {
+                    url.setEnabled(true);
                     return repository.save(url);
                 }).then();
     }

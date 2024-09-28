@@ -9,5 +9,6 @@ public interface UrlManagementService {
     Mono<UrlData> getUrlData(String shortUrl);
     Flux<UrlData> getAllUrls();
     Mono<UrlData> updateUrl(String id, String newUrl);
-    Mono<Void> toggleUrl(String id);
+    Mono<Void> enableUrl(String shortUrl);
+    Mono<Void> disableUrl(String shortUrl);
 }

@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/short/url")
+@RequestMapping("${endpointshort.url.redirect}")
 @AllArgsConstructor
 @Slf4j
 public class UrlRedirectController {

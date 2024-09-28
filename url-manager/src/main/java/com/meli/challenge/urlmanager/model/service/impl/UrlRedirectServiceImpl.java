@@ -1,5 +1,6 @@
 package com.meli.challenge.urlmanager.model.service.impl;
 
+import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
 import com.meli.challenge.urlmanager.model.entity.UrlData;
 import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
 import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
@@ -20,11 +21,12 @@ public class UrlRedirectServiceImpl implements UrlRedirectService {
 
 
     @Override
-    public Mono<UrlData> getOriginalUrl(String shortUrl) {
+    public Mono<UrlResponse> getOriginalUrl(String shortUrl) {
         log.info("shortUrl: {}", shortUrl);
         return repository.findByShortUrl(shortUrl)
                 .doOnSuccess(url -> url.setAccessCount(url.getAccessCount() + 1))
-                .doOnSuccess(this::sendAccessEvent);
+                .doOnSuccess(this::sendAccessEvent)
+                .map(i -> new UrlResponse(i.getOriginalUrl()));
     }
 
     @Override

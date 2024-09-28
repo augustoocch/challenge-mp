@@ -1,5 +1,6 @@
 package com.meli.challenge.urlmanager.domain.rest.controller;
 
+import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
 import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +20,11 @@ public class UrlRedirectController {
 
 
     @GetMapping()
-    public Mono<ResponseEntity<Object>> redirectUrl(@RequestParam String id) {
+    public Mono<ResponseEntity<UrlResponse>> redirectUrl(@RequestParam String id) {
         return urlService.getOriginalUrl(id)
-                .map(shortenedUrl -> ResponseEntity.status(HttpStatus.FOUND)
-                        .location(URI.create(shortenedUrl.getOriginalUrl()))
-                        .build()
-                )
+                .map(url -> ResponseEntity.status(HttpStatus.OK)
+                        .location(URI.create(url.getOriginalUrl()))
+                        .body(new UrlResponse(url.getOriginalUrl())))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }

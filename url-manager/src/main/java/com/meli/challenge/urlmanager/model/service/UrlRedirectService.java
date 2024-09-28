@@ -1,9 +1,10 @@
 package com.meli.challenge.urlmanager.model.service;
 
+import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
 import com.meli.challenge.urlmanager.model.entity.UrlData;
 import reactor.core.publisher.Mono;
 
 public interface UrlRedirectService {
-    Mono<UrlData> getOriginalUrl(String shortUrl);
+    Mono<UrlResponse> getOriginalUrl(String shortUrl);
     void sendAccessEvent(UrlData event);
 }

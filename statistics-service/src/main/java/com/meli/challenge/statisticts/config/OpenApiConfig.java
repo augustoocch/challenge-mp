@@ -17,7 +17,7 @@ public class OpenApiConfig {
 
         return new OpenAPI().info(new io.swagger.v3.oas.models.info.Info()
                 .title("Mercado Libre Challenge")
-                .description("URL Manager API")
+                .description("URL Statistics Service")
                 .version("1.0")
                 .contact(contact));
     }

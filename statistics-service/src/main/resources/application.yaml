@@ -3,14 +3,13 @@ spring:
     name: statistics-service
   kafka:
     bootstrap-servers: localhost:9092
-
 server:
-  port: 9000
+  port: 9100
   ssl:
     enabled: true
-    key-store: classpath:microservice-keystore.jks
+    key-store: classpath:statistics-keystore.jks
     key-store-password: ${KEY-STORE}
-    key-alias: microservice
+    key-alias: statistics
 
 
 logging:

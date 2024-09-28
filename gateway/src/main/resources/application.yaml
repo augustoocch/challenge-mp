@@ -7,10 +7,11 @@ spring:
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_UNIQUE
       routes:
-        - id: url-shortener-service
-          uri: ${URL_SHORTENER_SERVICE_URL}
+        - id: url-management-service
+          uri: ${URL_MANAGEMENT_SERVICE_URL}
           predicates:
             - Path=/url/management/**
+            - Path=/api/short/url/**
           filters: []
 
 server:
@@ -22,4 +23,4 @@ server:
 
 logging:
   level:
-    root: INFO
+    root: DEBUG

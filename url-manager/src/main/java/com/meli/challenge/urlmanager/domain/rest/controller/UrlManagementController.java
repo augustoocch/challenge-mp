@@ -22,16 +22,11 @@ public class UrlManagementController {
                 .map(url -> ResponseEntity.ok(url));
     }
 
-    @GetMapping("/{id}")
-    public Mono<ResponseEntity<UrlData>> getShortUrl(@PathVariable String id) {
+    @GetMapping()
+    public Mono<ResponseEntity<UrlData>> getShortUrl(@RequestParam String id) {
         return service.getUrlData(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping
-    public Flux<UrlData> getAllUrls() {
-        return service.getAllUrls();
     }
 
     @PutMapping("/{id}")

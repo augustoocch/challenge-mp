@@ -32,7 +32,6 @@ public class SecurityConfig {
         return http
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers("/authenticate").permitAll()
-                        .pathMatchers("/management", "/management/**").authenticated()
                         .anyExchange().authenticated()
                 )
                 .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)

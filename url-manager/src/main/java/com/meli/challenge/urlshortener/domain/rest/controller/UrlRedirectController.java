@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/shortener")
+@RequestMapping("${endpointshort.url.redirect}")
 public class UrlRedirectController {
     private final UrlRedirectService urlService;
 

@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/url/management")
+@RequestMapping("${endpoint.url.management}")
 public class UrlManagementController {
     private final UrlManagementService service;
 
@@ -43,13 +43,13 @@ public class UrlManagementController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PatchMapping("/enable/{id}")
+    @PatchMapping("${endpoint.url.management.enable}")
     public Mono<ResponseEntity<Void>> toggleUrl(@PathVariable String id) {
         return service.toggleUrl(id)
                 .then(Mono.just(ResponseEntity.ok().build()));
     }
 
-    @PatchMapping("/disable/{id}")
+    @PatchMapping("${endpoint.url.management.disable}")
     public Mono<ResponseEntity<Void>> disableUrl(@PathVariable String id) {
         return service.toggleUrl(id)
                 .then(Mono.just(ResponseEntity.ok().build()));

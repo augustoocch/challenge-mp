@@ -9,6 +9,8 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 
+import static com.meli.challenge.urlshortener.model.constants.Constants.MELI_SHORT_PATH;
+
 @Service
 public class UrlManagementServiceImpl implements UrlManagementService {
         private final UrlDatalRepository repository;
@@ -63,6 +65,6 @@ public class UrlManagementServiceImpl implements UrlManagementService {
         }
 
         private String generateShortUrl() {
-            return "short.ly/" + System.currentTimeMillis();
+            return MELI_SHORT_PATH + System.currentTimeMillis();
         }
     }

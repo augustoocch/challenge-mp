@@ -2,6 +2,7 @@ package com.meli.challenge.urlmanager.model.service.impl;
 
 import com.meli.challenge.urlmanager.model.entity.UrlData;
 import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
+import com.meli.challenge.urlmanager.model.exception.ServiceException;
 import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
 
 import static com.meli.challenge.urlmanager.model.constants.Constants.MELI_SHORT_PATH;
+import static com.meli.challenge.urlmanager.model.constants.ErrorCode.*;
 
 @Slf4j
 @Service
@@ -22,6 +24,9 @@ public class UrlManagementServiceImpl implements UrlManagementService {
 
     public Mono<UrlData> createUrlData(String originalUrl) {
         return repository.findByOriginalUrl(originalUrl)
+                .doOnNext(url -> {
+                    throw new ServiceException(URL_ALREADY_EXISTS.getMessage(), URL_ALREADY_EXISTS.getCode());
+                })
                 .switchIfEmpty(
                         Mono.defer(() -> createNewUrlData(originalUrl).flatMap(repository::save))
                 );
@@ -51,6 +56,7 @@ public class UrlManagementServiceImpl implements UrlManagementService {
 
     public Mono<UrlData> updateUrl(String id, String newUrl) {
         return repository.findById(id)
+                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
                 .flatMap(url -> {
                     url.setOriginalUrl(newUrl);
                     url.setUpdatedAt(LocalDateTime.now());

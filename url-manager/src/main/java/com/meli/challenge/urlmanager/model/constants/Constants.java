@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener.model.constants;
+package com.meli.challenge.urlmanager.model.constants;
 
 public class Constants {
     public static String URL_ACCESS_EVENTS = "url-access-events";

@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener.config;
+package com.meli.challenge.urlmanager.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;

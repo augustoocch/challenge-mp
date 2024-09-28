@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener.config;
+package com.meli.challenge.urlmanager.config;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.meli.challenge.urlshortener.model.constants.Constants.TOPIC_EVENTS;
+import static com.meli.challenge.urlmanager.model.constants.Constants.TOPIC_EVENTS;
 
 @Configuration
 public class KafkaConfig {

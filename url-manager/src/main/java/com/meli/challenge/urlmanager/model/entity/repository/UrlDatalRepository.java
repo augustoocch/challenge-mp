@@ -1,6 +1,6 @@
-package com.meli.challenge.urlshortener.model.entity.repository;
+package com.meli.challenge.urlmanager.model.entity.repository;
 
-import com.meli.challenge.urlshortener.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 

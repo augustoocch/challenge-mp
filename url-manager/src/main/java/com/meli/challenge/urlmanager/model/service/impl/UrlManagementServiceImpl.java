@@ -1,15 +1,15 @@
-package com.meli.challenge.urlshortener.model.service.impl;
+package com.meli.challenge.urlmanager.model.service.impl;
 
-import com.meli.challenge.urlshortener.model.entity.UrlData;
-import com.meli.challenge.urlshortener.model.entity.repository.UrlDatalRepository;
-import com.meli.challenge.urlshortener.model.service.UrlManagementService;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
+import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 
-import static com.meli.challenge.urlshortener.model.constants.Constants.MELI_SHORT_PATH;
+import static com.meli.challenge.urlmanager.model.constants.Constants.MELI_SHORT_PATH;
 
 @Service
 public class UrlManagementServiceImpl implements UrlManagementService {

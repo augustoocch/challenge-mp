@@ -1,8 +1,8 @@
-package com.meli.challenge.urlshortener.domain.rest.controller;
+package com.meli.challenge.urlmanager.domain.rest.controller;
 
-import com.meli.challenge.urlshortener.domain.rest.dto.UrlRequest;
-import com.meli.challenge.urlshortener.model.entity.UrlData;
-import com.meli.challenge.urlshortener.model.service.UrlManagementService;
+import com.meli.challenge.urlmanager.domain.rest.dto.UrlRequest;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;

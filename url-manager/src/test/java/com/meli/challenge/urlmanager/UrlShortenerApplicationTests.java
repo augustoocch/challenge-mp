@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener;
+package com.meli.challenge.urlmanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

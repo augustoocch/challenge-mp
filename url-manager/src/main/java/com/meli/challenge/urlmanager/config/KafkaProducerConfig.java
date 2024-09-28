@@ -1,6 +1,6 @@
-package com.meli.challenge.urlshortener.config;
+package com.meli.challenge.urlmanager.config;
 
-import com.meli.challenge.urlshortener.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

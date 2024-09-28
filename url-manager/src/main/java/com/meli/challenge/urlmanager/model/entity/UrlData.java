@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener.model.entity;
+package com.meli.challenge.urlmanager.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

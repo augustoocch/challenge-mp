@@ -1,4 +1,4 @@
-package com.meli.challenge.urlshortener.domain.rest.dto;
+package com.meli.challenge.urlmanager.domain.rest.dto;
 
 import lombok.Getter;
 import lombok.Setter;

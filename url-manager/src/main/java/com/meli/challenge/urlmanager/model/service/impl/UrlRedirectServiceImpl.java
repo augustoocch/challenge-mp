@@ -1,13 +1,13 @@
-package com.meli.challenge.urlshortener.model.service.impl;
+package com.meli.challenge.urlmanager.model.service.impl;
 
-import com.meli.challenge.urlshortener.model.entity.UrlData;
-import com.meli.challenge.urlshortener.model.entity.repository.UrlDatalRepository;
-import com.meli.challenge.urlshortener.model.service.UrlRedirectService;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
+import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import static com.meli.challenge.urlshortener.model.constants.Constants.TOPIC_EVENTS;
+import static com.meli.challenge.urlmanager.model.constants.Constants.TOPIC_EVENTS;
 
 @Service
 public class UrlRedirectServiceImpl implements UrlRedirectService {

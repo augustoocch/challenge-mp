@@ -1,6 +1,6 @@
-package com.meli.challenge.urlshortener.model.service;
+package com.meli.challenge.urlmanager.model.service;
 
-import com.meli.challenge.urlshortener.model.entity.UrlData;
+import com.meli.challenge.urlmanager.model.entity.UrlData;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -15,18 +15,18 @@ import static com.meli.challenge.urlmanager.model.constants.Constants.TOPIC_EVEN
 @Configuration
 public class KafkaConfig {
 
-        @Value(value = "${spring.kafka.bootstrap-servers}")
-        private String bootstrapAddress;
+    @Value(value = "${spring.kafka.bootstrap-servers}")
+    private String bootstrapAddress;
 
-        @Bean
-        public KafkaAdmin kafkaAdmin() {
-            Map<String, Object> configs = new HashMap<>();
-            configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-            return new KafkaAdmin(configs);
-        }
+    @Bean
+    public KafkaAdmin kafkaAdmin() {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        return new KafkaAdmin(configs);
+    }
 
-        @Bean
-        public NewTopic topic1() {
-            return new NewTopic(TOPIC_EVENTS, 1, (short) 1);
-        }
+    @Bean
+    public NewTopic topic1() {
+        return new NewTopic(TOPIC_EVENTS, 1, (short) 1);
+    }
 }

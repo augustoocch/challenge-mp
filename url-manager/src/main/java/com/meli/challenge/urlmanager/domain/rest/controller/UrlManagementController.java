@@ -3,6 +3,7 @@ package com.meli.challenge.urlmanager.domain.rest.controller;
 import com.meli.challenge.urlmanager.domain.rest.dto.UrlRequest;
 import com.meli.challenge.urlmanager.model.entity.UrlData;
 import com.meli.challenge.urlmanager.model.service.UrlManagementService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -10,12 +11,9 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("${endpoint.url.management}")
+@AllArgsConstructor
 public class UrlManagementController {
     private final UrlManagementService service;
-
-    public UrlManagementController(UrlManagementService service) {
-        this.service = service;
-    }
 
     @PostMapping
     public Mono<ResponseEntity<UrlData>> createShortUrl(

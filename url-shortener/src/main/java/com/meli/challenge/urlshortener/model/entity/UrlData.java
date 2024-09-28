@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShortenedUrl {
+public class UrlData {
     @Id
     private String id;
     private String shortUrl;

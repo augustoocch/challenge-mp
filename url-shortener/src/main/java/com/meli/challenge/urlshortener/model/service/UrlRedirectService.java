@@ -1,9 +1,9 @@
 package com.meli.challenge.urlshortener.model.service;
 
-import com.meli.challenge.urlshortener.model.entity.ShortenedUrl;
+import com.meli.challenge.urlshortener.model.entity.UrlData;
 import reactor.core.publisher.Mono;
 
 public interface UrlRedirectService {
-    Mono<ShortenedUrl> getOriginalUrl(String shortUrl);
-    void sendAccessEvent(ShortenedUrl event);
+    Mono<UrlData> getOriginalUrl(String shortUrl);
+    void sendAccessEvent(UrlData event);
 }

@@ -1,7 +1,7 @@
 package com.meli.challenge.urlshortener.model.service.impl;
 
-import com.meli.challenge.urlshortener.model.entity.ShortenedUrl;
-import com.meli.challenge.urlshortener.model.entity.repository.ShortenedUrlRepository;
+import com.meli.challenge.urlshortener.model.entity.UrlData;
+import com.meli.challenge.urlshortener.model.entity.repository.UrlDatalRepository;
 import com.meli.challenge.urlshortener.model.service.UrlRedirectService;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -11,24 +11,24 @@ import static com.meli.challenge.urlshortener.model.constants.Constants.TOPIC_EV
 
 @Service
 public class UrlRedirectServiceImpl implements UrlRedirectService {
-    private final KafkaTemplate<String, ShortenedUrl> kafkaTemplate;
-    private final ShortenedUrlRepository repository;
+    private final KafkaTemplate<String, UrlData> kafkaTemplate;
+    private final UrlDatalRepository repository;
 
-    public UrlRedirectServiceImpl(KafkaTemplate<String, ShortenedUrl> kafkaTemplate,
-                                  ShortenedUrlRepository repository) {
+    public UrlRedirectServiceImpl(KafkaTemplate<String, UrlData> kafkaTemplate,
+                                  UrlDatalRepository repository) {
         this.kafkaTemplate = kafkaTemplate;
         this.repository = repository;
     }
 
     @Override
-    public Mono<ShortenedUrl> getOriginalUrl(String shortUrl) {
+    public Mono<UrlData> getOriginalUrl(String shortUrl) {
         return repository.findByShortUrl(shortUrl)
                 .doOnSuccess(url -> url.setAccessCount(url.getAccessCount() + 1))
                 .doOnSuccess(this::sendAccessEvent);
     }
 
     @Override
-    public void sendAccessEvent(ShortenedUrl event) {
+    public void sendAccessEvent(UrlData event) {
         kafkaTemplate.send(TOPIC_EVENTS, event);
     }
 

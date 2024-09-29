@@ -37,7 +37,6 @@ public class UrlManagementServiceImpl implements UrlManagementService {
         UrlData url = new UrlData();
         url.setOriginalUrl(originalUrl);
         url.setShortUrl(generateShortUrl());
-        url.setAccessCount(0);
         url.setCreatedAt(LocalDateTime.now());
         url.setUpdatedAt(LocalDateTime.now());
         url.setEnabled(true);
@@ -46,8 +45,7 @@ public class UrlManagementServiceImpl implements UrlManagementService {
 
     public Mono<UrlData> getUrlData(String shortUrl) {
         return repository.findByShortUrl(shortUrl)
-                .doOnSuccess(url -> url.setAccessCount(url.getAccessCount() + 1))
-                .flatMap(repository::save);
+                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())));
     }
 
     public Flux<UrlData> getAllUrls() {

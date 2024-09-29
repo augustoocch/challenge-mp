@@ -67,7 +67,6 @@ public class UrlManagementServiceImplTest {
     public void getUrlData_whenShortUrlExists_shouldIncrementAccessCount() {
         String shortUrl = "shortUrl";
         UrlData urlData = new UrlData();
-        urlData.setAccessCount(0);
         urlData.setShortUrl(shortUrl);
 
         when(repository.findByShortUrl(eq(shortUrl)))
@@ -76,7 +75,7 @@ public class UrlManagementServiceImplTest {
                 .thenReturn(Mono.just(urlData));
 
         StepVerifier.create(service.getUrlData(shortUrl))
-                .expectNextMatches(url -> url.getAccessCount() == 1)
+                .expectNextMatches(data -> data.getShortUrl().equals(shortUrl))
                 .verifyComplete();
 
         verify(repository, times(1)).findByShortUrl(eq(shortUrl));

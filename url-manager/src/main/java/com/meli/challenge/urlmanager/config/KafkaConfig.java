@@ -1,6 +1,6 @@
 package com.meli.challenge.urlmanager.config;
 
-import com.meli.challenge.urlmanager.model.business.UrlSerializer;
+import com.meli.challenge.urlmanager.model.serializer.UrlSerializer;
 import com.meli.challenge.urlmanager.model.entity.UrlData;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

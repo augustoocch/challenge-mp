@@ -1,7 +1,7 @@
 package com.meli.challenge.statisticts.config;
 
 import com.meli.challenge.statisticts.domain.rest.dto.UrlDataDto;
-import com.meli.challenge.statisticts.model.business.UrlDeserializer;
+import com.meli.challenge.statisticts.model.deserializer.UrlDeserializer;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

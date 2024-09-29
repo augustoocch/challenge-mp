@@ -1,15 +1,13 @@
 package com.meli.challenge.urlmanager.model.exception;
 
-public class ServiceException extends RuntimeException{
+import lombok.Getter;
 
-    private int code;
+@Getter
+public class ServiceException extends RuntimeException{
+    private final int code;
 
     public ServiceException(String message, int code) {
         super(message);
         this.code = code;
-    }
-
-    public int getCode() {
-        return code;
     }
 }

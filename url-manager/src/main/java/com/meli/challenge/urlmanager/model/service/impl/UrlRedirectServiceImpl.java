@@ -28,7 +28,6 @@ public class UrlRedirectServiceImpl implements UrlRedirectService {
         log.info("shortUrl: {}", shortUrl);
         return repository.findByShortUrl(shortUrl)
                 .filter(UrlData::isEnabled)
-                .doOnSuccess(url -> url.setAccessCount(url.getAccessCount() + 1))
                 .doOnSuccess(this::sendAccessEvent)
                 .map(i -> new UrlResponse(i.getOriginalUrl()))
                 .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
@@ -43,7 +42,7 @@ public class UrlRedirectServiceImpl implements UrlRedirectService {
             log.info("Sending event: {}", event);
             kafkaTemplate.send(TOPIC_EVENTS, event);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.info("Error sending event: {}", e.getMessage());
         }
     }
 

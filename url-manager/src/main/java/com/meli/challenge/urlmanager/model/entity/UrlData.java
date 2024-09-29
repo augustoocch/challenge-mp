@@ -26,6 +26,4 @@ public class UrlData {
     private boolean enabled;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private int accessCount;
-    private LocalDateTime lastAccessedAt;
 }

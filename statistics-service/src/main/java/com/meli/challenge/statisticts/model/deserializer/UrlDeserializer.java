@@ -1,4 +1,4 @@
-package com.meli.challenge.statisticts.model.business;
+package com.meli.challenge.statisticts.model.deserializer;
 
 import com.meli.challenge.statisticts.domain.rest.dto.UrlDataDto;
 import org.apache.kafka.common.serialization.Deserializer;
@@ -12,8 +12,6 @@ public class UrlDeserializer implements Deserializer<UrlDataDto> {
         String data = new String(bytes);
         String[] parts = data.split(",");
         LocalDateTime createdAt = LocalDateTime.parse(parts[3]);
-        LocalDateTime lastAccessedAt = LocalDateTime.parse(parts[4]);
-        return new UrlDataDto(parts[1], parts[0], true, createdAt, createdAt,
-                Integer.parseInt(parts[2]), lastAccessedAt);
+        return new UrlDataDto(parts[0], parts[1], createdAt);
     }
 }

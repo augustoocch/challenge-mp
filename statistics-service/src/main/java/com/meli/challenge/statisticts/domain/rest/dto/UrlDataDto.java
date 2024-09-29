@@ -14,9 +14,5 @@ import java.time.LocalDateTime;
 public class UrlDataDto {
     private String shortUrl;
     private String originalUrl;
-    private boolean enabled;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private int accessCount;
-    private LocalDateTime lastAccessedAt;
 }

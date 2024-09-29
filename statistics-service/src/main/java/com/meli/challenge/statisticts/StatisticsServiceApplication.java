@@ -1,13 +1,13 @@
-package com.meli.challenge.urlmanager;
+package com.meli.challenge.statisticts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UrlShortenerApplication {
+public class StatisticsServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UrlShortenerApplication.class, args);
+        SpringApplication.run(StatisticsServiceApplication.class, args);
     }
 
 }

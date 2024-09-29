@@ -4,7 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/.idea
 /.mvn
+/mvnw.cmd
 
 ### STS ###
 .apt_generated

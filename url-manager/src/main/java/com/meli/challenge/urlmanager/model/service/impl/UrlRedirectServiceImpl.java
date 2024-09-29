@@ -2,7 +2,7 @@ package com.meli.challenge.urlmanager.model.service.impl;
 
 import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
 import com.meli.challenge.urlmanager.model.entity.UrlData;
-import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
+import com.meli.challenge.urlmanager.model.entity.repository.UrlDataRepository;
 import com.meli.challenge.urlmanager.model.exception.ServiceException;
 import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ import static com.meli.challenge.urlmanager.model.constants.ErrorCode.URL_NOT_FO
 @AllArgsConstructor
 public class UrlRedirectServiceImpl implements UrlRedirectService {
     private final KafkaTemplate<String, UrlData> kafkaTemplate;
-    private final UrlDatalRepository repository;
+    private final UrlDataRepository repository;
 
 
     @Override

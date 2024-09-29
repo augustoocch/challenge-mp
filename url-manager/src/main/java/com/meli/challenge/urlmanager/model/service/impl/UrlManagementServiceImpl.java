@@ -1,7 +1,7 @@
 package com.meli.challenge.urlmanager.model.service.impl;
 
 import com.meli.challenge.urlmanager.model.entity.UrlData;
-import com.meli.challenge.urlmanager.model.entity.repository.UrlDatalRepository;
+import com.meli.challenge.urlmanager.model.entity.repository.UrlDataRepository;
 import com.meli.challenge.urlmanager.model.exception.ServiceException;
 import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import static com.meli.challenge.urlmanager.model.constants.ErrorCode.*;
 @Service
 @AllArgsConstructor
 public class UrlManagementServiceImpl implements UrlManagementService {
-    private final UrlDatalRepository repository;
+    private final UrlDataRepository repository;
 
 
     public Mono<UrlData> createUrlData(String originalUrl) {

@@ -4,9 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-/.idea
 /.mvn
+/.idea
 /mvnw.cmd
+/mvnw/
 
 ### STS ###
 .apt_generated
@@ -35,3 +36,4 @@ build/
 
 ### VS Code ###
 .vscode/
+

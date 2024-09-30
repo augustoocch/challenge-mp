@@ -1,16 +1,15 @@
 version: '3'
 services:
-  
-  # Redis para el caché
+
+
   redis:
     image: redis:alpine
     container_name: redis
     ports:
       - "6379:6379"
     volumes:
-      - redis-data:/data
-  
-  # Prometheus para monitoreo
+      - redis-data:/data 
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus

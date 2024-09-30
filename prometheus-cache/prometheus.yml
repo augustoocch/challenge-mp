@@ -9,8 +9,8 @@ scrape_configs:
   - job_name: 'statistics-service'
     scrape_interval: 10s
     metrics_path: '/actuator/prometheus'
-    scheme: https  # Aquí indicamos que debe usar HTTPS
+    scheme: https
     tls_config:
-      insecure_skip_verify: true  # Ignora problemas de verificación SSL si es un certificado autofirmado
+      insecure_skip_verify: true
     static_configs:
       - targets: ["host.docker.internal:9100"] 

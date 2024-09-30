@@ -28,11 +28,8 @@ public class StatisticsConsumerServiceImpl implements StatisticsConsumerService 
             String shortUrl = urlDataDto.getShortUrl();
 
             Statistic statistic = statisticRepository.findByShortUrl(shortUrl)
-                    .orElseGet(() -> {
-                        Statistic newStatistic = new Statistic(shortUrl, urlDataDto.getOriginalUrl(), 0, LocalDateTime.now().toString());
-                        statisticRepository.save(newStatistic);
-                        return newStatistic;
-                    });
+                    .orElse(new Statistic(shortUrl, urlDataDto.getOriginalUrl(), 0, LocalDateTime.now().toString()));
+
             statistic.incrementAccessCount();
             log.info("Estadísticas actualizadas: {}", statistic.toString());
             statisticRepository.save(statistic);

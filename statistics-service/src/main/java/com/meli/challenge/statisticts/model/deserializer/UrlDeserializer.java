@@ -1,6 +1,6 @@
 package com.meli.challenge.statisticts.model.deserializer;
 
-import com.meli.challenge.statisticts.domain.rest.dto.UrlDataDto;
+import com.meli.challenge.statisticts.model.dto.UrlDataDto;
 import org.apache.kafka.common.serialization.Deserializer;
 
 import java.time.LocalDateTime;

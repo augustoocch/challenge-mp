@@ -1,6 +1,6 @@
 package com.meli.challenge.statisticts.model.service.impl;
 
-import com.meli.challenge.statisticts.domain.rest.dto.UrlDataDto;
+import com.meli.challenge.statisticts.model.dto.UrlDataDto;
 import com.meli.challenge.statisticts.model.entity.Statistic;
 import com.meli.challenge.statisticts.model.entity.repository.StatisticRepository;
 import com.meli.challenge.statisticts.model.service.StatisticsConsumerService;

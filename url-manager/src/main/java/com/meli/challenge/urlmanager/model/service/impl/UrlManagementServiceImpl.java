@@ -52,8 +52,8 @@ public class UrlManagementServiceImpl implements UrlManagementService {
         return repository.findAll();
     }
 
-    public Mono<UrlData> updateUrl(String id, String newUrl) {
-        return repository.findById(id)
+    public Mono<UrlData> updateUrl(String shortUrl, String newUrl) {
+        return repository.findByShortUrl(shortUrl)
                 .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
                 .flatMap(url -> {
                     url.setOriginalUrl(newUrl);

@@ -19,25 +19,25 @@ import static com.meli.challenge.statisticts.model.constants.Constants.TOPIC_EVE
 @AllArgsConstructor
 @Slf4j
 public class StatisticsConsumerServiceImpl implements StatisticsConsumerService {
-
     StatisticRepository statisticRepository;
 
     @KafkaListener(topics = TOPIC_EVENTS, groupId = STATISTICS_GROUP)
     public void listen(UrlDataDto urlDataDto) {
-            try {
-                log.info("Mensaje recibido a las {}: {} ", ZonedDateTime.now(), urlDataDto);
-                String shortUrl = urlDataDto.getShortUrl();
+        try {
+            log.info("Mensaje recibido a las {}: {} ", ZonedDateTime.now(), urlDataDto);
+            String shortUrl = urlDataDto.getShortUrl();
 
-                Statistic statistic = statisticRepository.findByShortUrl(shortUrl)
-                        .orElseGet(() -> {
-                            Statistic newStatistic = new Statistic(shortUrl, urlDataDto.getOriginalUrl(), 0, LocalDateTime.now());
-                            statisticRepository.save(newStatistic);
-                            return newStatistic;
-                        });
-                statistic.incrementAccessCount();
-                statisticRepository.save(statistic);
-            } catch (Exception e) {
-                log.error("Error al procesar el mensaje: {}", e.getMessage());
-            }
+            Statistic statistic = statisticRepository.findByShortUrl(shortUrl)
+                    .orElseGet(() -> {
+                        Statistic newStatistic = new Statistic(shortUrl, urlDataDto.getOriginalUrl(), 0, LocalDateTime.now().toString());
+                        statisticRepository.save(newStatistic);
+                        return newStatistic;
+                    });
+            statistic.incrementAccessCount();
+            log.info("Estadísticas actualizadas: {}", statistic.toString());
+            statisticRepository.save(statistic);
+        } catch (Exception e) {
+            log.error("Error al procesar el mensaje: {}", e.getMessage());
         }
     }
+}

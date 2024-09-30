@@ -15,8 +15,3 @@ server:
     key-store: classpath:microservice-keystore.jks
     key-store-password: ${KEY-STORE}
     key-alias: microservice
-
-
-logging:
-  level:
-    root: INFO

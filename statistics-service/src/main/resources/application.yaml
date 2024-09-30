@@ -17,8 +17,3 @@ server:
     key-store: classpath:statistics-keystore.jks
     key-store-password: ${KEY-STORE}
     key-alias: statistics
-
-
-logging:
-  level:
-    root: INFO

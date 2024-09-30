@@ -18,7 +18,7 @@ public class RoutingConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("url-management-service", r -> r.path("/url/management/**")
-                        .and().method("POST", "PUT", "DELETE", "GET")
+                        .and().method("POST", "PUT", "PATCH", "DELETE", "GET")
                         .uri(URL_MANAGEMENT_SERVICE_URL))
                 .route("url-shortener-service", r -> r.path("/api/short/url/**")
                         .and().method("GET")

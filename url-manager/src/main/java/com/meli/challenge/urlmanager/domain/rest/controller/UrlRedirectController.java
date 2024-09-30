@@ -3,7 +3,6 @@ package com.meli.challenge.urlmanager.domain.rest.controller;
 import com.meli.challenge.urlmanager.domain.rest.controller.documentation.UrlRedirectControllerInfo;
 import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
 import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
-import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,6 @@ public class UrlRedirectController implements UrlRedirectControllerInfo {
 
     @GetMapping
     public Mono<ResponseEntity<UrlResponse>> redirectUrl(
-            @Parameter(description = "ID de la URL corta")
             @RequestParam String id) {
         return urlService.getOriginalUrl(id)
                 .map(url -> ResponseEntity.status(HttpStatus.OK)

@@ -1,7 +1,6 @@
 package com.meli.challenge.urlmanager.domain.rest.controller;
 
 import com.meli.challenge.urlmanager.TestConfig;
-import com.meli.challenge.urlmanager.domain.rest.controller.advice.ControllerHandler;
 import com.meli.challenge.urlmanager.domain.rest.dto.UrlRequest;
 import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;

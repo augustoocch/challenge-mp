@@ -6,8 +6,6 @@ import com.meli.challenge.urlmanager.model.entity.repository.UrlDataRepository;
 import com.meli.challenge.urlmanager.model.exception.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.TestPropertySource;
@@ -25,9 +23,8 @@ class UrlRedirectServiceImplTest {
     private KafkaTemplate<String, UrlData> kafkaTemplate;
     private UrlRedirectServiceImpl urlRedirectService;
 
-    private static final String SHORT_URL = "abc123";
-    private static final String ORIGINAL_URL = "http://example.com";
-
+    private static final String SHORT_URL = "meli.ly/123124";
+    private static final String ORIGINAL_URL = "http://url-ejemplo.com";
     private UrlData urlData;
 
     @BeforeEach

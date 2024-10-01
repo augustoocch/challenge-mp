@@ -2,7 +2,6 @@ package com.meli.challenge.urlmanager.domain.rest.controller;
 
 import com.meli.challenge.urlmanager.TestConfig;
 import com.meli.challenge.urlmanager.domain.rest.dto.UrlResponse;
-import com.meli.challenge.urlmanager.model.service.UrlManagementService;
 import com.meli.challenge.urlmanager.model.service.UrlRedirectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -8,6 +8,8 @@ target/
 /.mvn
 /mvnw.cmd
 
+/.env
+
 ### STS ###
 .apt_generated
 .classpath

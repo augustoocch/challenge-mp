@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import static com.meli.challenge.urlmanager.model.constants.Constants.TOPIC_EVENTS;
-import static com.meli.challenge.urlmanager.model.constants.ErrorCode.URL_DISABLED;
-import static com.meli.challenge.urlmanager.model.constants.ErrorCode.URL_NOT_FOUND;
+import static com.meli.challenge.urlmanager.model.constants.ErrorCode.*;
 
 @Slf4j
 @Service
@@ -27,12 +26,20 @@ public class UrlRedirectServiceImpl implements UrlRedirectService {
     public Mono<UrlResponse> getOriginalUrl(String shortUrl) {
         log.info("shortUrl: {}", shortUrl);
         return repository.findByShortUrl(shortUrl)
-                .filter(UrlData::isEnabled)
-                .doOnSuccess(this::sendAccessEvent)
-                .map(i -> new UrlResponse(i.getOriginalUrl()))
-                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
+                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode()))) // Error si no se encuentra la URL
+                .flatMap(urlData -> {
+                    if (!urlData.isEnabled()) {
+                        return Mono.error(new ServiceException(URL_DISABLED.getMessage(), URL_DISABLED.getCode())); // Error si está deshabilitada
+                    }
+                    return Mono.just(urlData)
+                            .doOnSuccess(this::sendAccessEvent);
+                })
+                .map(urlData -> new UrlResponse(urlData.getOriginalUrl()))
                 .onErrorMap(e -> {
-                    return new ServiceException(URL_DISABLED.getMessage(), URL_DISABLED.getCode());
+                    if (e instanceof ServiceException) {
+                        return e;
+                    }
+                    return new ServiceException(UNKNOWN_ERROR.getMessage(), UNKNOWN_ERROR.getCode());
                 });
     }
 

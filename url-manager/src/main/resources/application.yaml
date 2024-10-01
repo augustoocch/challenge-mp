@@ -13,5 +13,5 @@ server:
   ssl:
     enabled: true
     key-store: classpath:microservice-keystore.jks
-    key-store-password: ${KEY-STORE}
+    key-store-password: ${KEY_STORE}
     key-alias: microservice

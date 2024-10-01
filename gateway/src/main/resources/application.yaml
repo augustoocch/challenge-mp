@@ -18,9 +18,5 @@ server:
   port: 8080
   ssl:
     key-store: classpath:gateway-keystore.jks
-    key-store-password: ${KEY-STORE}
+    key-store-password: ${KEY_STORE}
     key-alias: gateway
-
-logging:
-  level:
-    root: DEBUG

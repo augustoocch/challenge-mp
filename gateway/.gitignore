@@ -9,6 +9,8 @@ target/
 /mvnw.cmd
 /mvnw/
 
+/.env
+
 ### STS ###
 .apt_generated
 .classpath

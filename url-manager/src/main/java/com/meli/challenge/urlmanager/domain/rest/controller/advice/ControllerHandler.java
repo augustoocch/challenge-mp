@@ -19,7 +19,7 @@ public class ControllerHandler {
     @ExceptionHandler(ServiceException.class)
     public ResponseEntity<ExceptionDto> handleServiceException(ServiceException ex) {
         ExceptionDto errorResponse = new ExceptionDto(ZonedDateTime.now().format(dateTimeFormatter), ex.getCode());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        return ResponseEntity.status(ex.getCode()).body(errorResponse);
     }
 
     @ExceptionHandler(Exception.class)

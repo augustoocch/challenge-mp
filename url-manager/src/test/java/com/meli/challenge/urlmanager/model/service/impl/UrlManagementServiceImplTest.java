@@ -1,7 +1,6 @@
 package com.meli.challenge.urlmanager.model.service.impl;
 
-import static com.meli.challenge.urlmanager.model.constants.ErrorCode.URL_ALREADY_EXISTS;
-import static com.meli.challenge.urlmanager.model.constants.ErrorCode.URL_NOT_FOUND;
+import static com.meli.challenge.urlmanager.model.constants.ErrorCode.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -124,18 +123,18 @@ public class UrlManagementServiceImplTest {
 
     @Test
     public void updateUrl_whenUrlNotExists_shouldReturnError() {
-        String id = "id";
+        String shortUrl = "shortUrl.ly";
         String newUrl = "https://new-url.com";
 
         doReturn(Mono.empty())
                 .when(repository).findByShortUrl(anyString());
 
-        StepVerifier.create(service.updateUrl(id, newUrl))
+        StepVerifier.create(service.updateUrl(shortUrl, newUrl))
                 .expectErrorMatches(throwable -> throwable instanceof ServiceException
                         && ((ServiceException) throwable).getCode() == (URL_NOT_FOUND.getCode()))
                 .verify();
 
-        verify(repository, times(1)).findByShortUrl(eq(id));
+        verify(repository, times(1)).findByShortUrl(eq(shortUrl));
         verify(repository, never()).save(any(UrlData.class));
     }
 

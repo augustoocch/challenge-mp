@@ -15,5 +15,5 @@ server:
   ssl:
     enabled: true
     key-store: classpath:statistics-keystore.jks
-    key-store-password: ${KEY-STORE}
+    key-store-password: ${KEY_STORE}
     key-alias: statistics

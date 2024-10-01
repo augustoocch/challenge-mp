@@ -64,6 +64,7 @@ public class UrlManagementServiceImpl implements UrlManagementService {
 
     public Mono<Void> disableUrl(String shortUrl) {
         return repository.findByShortUrl(shortUrl)
+                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
                 .flatMap(url -> {
                     url.setEnabled(false);
                     return repository.save(url);
@@ -72,6 +73,7 @@ public class UrlManagementServiceImpl implements UrlManagementService {
 
     public Mono<Void> enableUrl(String shortUrl) {
         return repository.findByShortUrl(shortUrl)
+                .switchIfEmpty(Mono.error(new ServiceException(URL_NOT_FOUND.getMessage(), URL_NOT_FOUND.getCode())))
                 .flatMap(url -> {
                     url.setEnabled(true);
                     return repository.save(url);

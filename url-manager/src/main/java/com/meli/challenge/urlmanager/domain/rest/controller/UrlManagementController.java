@@ -15,11 +15,11 @@ import reactor.core.publisher.Mono;
 public class UrlManagementController implements UrlManagementControllerInfo {
     private final UrlManagementService service;
 
-    @PostMapping
+    @PostMapping()
     public Mono<ResponseEntity<UrlData>> createShortUrl(
             @RequestBody UrlRequest request) {
         return service.createUrlData(request.getUrl())
-                .map(url -> ResponseEntity.ok(url));
+                .map(ResponseEntity::ok);
     }
 
     @GetMapping
@@ -30,12 +30,12 @@ public class UrlManagementController implements UrlManagementControllerInfo {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping()
     public Mono<ResponseEntity<UrlData>> updateUrl(
-            @PathVariable String id,
+            @RequestParam String id,
             @RequestBody UrlRequest request) {
         return service.updateUrl(id, request.getUrl())
-                .map(url -> ResponseEntity.ok(url))
+                .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 

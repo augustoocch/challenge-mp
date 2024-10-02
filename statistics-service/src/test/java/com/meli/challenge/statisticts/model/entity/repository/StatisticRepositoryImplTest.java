@@ -18,16 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class StatisticRepositoryImplTest {
-
     @Mock
     private RedisTemplate<String, Statistic> redisTemplate;
-
     @Mock
     private ValueOperations<String, Statistic> valueOperations;
-
     @InjectMocks
     private StatisticRepositoryImpl statisticRepositoryImpl;
-
     private Statistic statistic;
 
     @BeforeEach
@@ -41,6 +37,7 @@ class StatisticRepositoryImplTest {
     void testFindByShortUrl_WhenExists() {
         when(valueOperations.get("short-url")).thenReturn(statistic);
         Optional<Statistic> result = statisticRepositoryImpl.findByShortUrl("short-url");
+
         assertTrue(result.isPresent());
         assertEquals(statistic, result.get());
     }
@@ -49,12 +46,14 @@ class StatisticRepositoryImplTest {
     void testFindByShortUrl_WhenNotExists() {
         when(valueOperations.get("short-url")).thenReturn(null);
         Optional<Statistic> result = statisticRepositoryImpl.findByShortUrl("short-url");
+
         assertFalse(result.isPresent());
     }
 
     @Test
     void testSave() {
         statisticRepositoryImpl.save(statistic);
+
         verify(valueOperations, times(1)).set(statistic.getShortUrl(), statistic, 24, TimeUnit.HOURS);
     }
 }

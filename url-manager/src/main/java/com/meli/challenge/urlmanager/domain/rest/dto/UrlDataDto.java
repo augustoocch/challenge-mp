@@ -1,4 +1,4 @@
-package com.meli.challenge.statisticts.model.dto;
+package com.meli.challenge.urlmanager.domain.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

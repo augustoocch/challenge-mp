@@ -12,6 +12,6 @@ public class UrlDeserializer implements Deserializer<UrlDataDto> {
         String data = new String(bytes);
         String[] parts = data.split(",");
         LocalDateTime createdAt = LocalDateTime.parse(parts[3]);
-        return new UrlDataDto(parts[0], parts[1], createdAt);
+        return new UrlDataDto(parts[0], parts[1], parts[2], createdAt);
     }
 }

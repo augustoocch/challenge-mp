@@ -1,6 +1,6 @@
-# URL Shortener Challenge
+# URL shorlinker
 
-This repository contains a solution for a URL Shortener service, designed to handle up to **1M RPM** and provide **99.98% uptime**. It features the following components:
+This repository contains a solution for a URL Shortener service, designed to handle requests in an asynchronicus way, and using top tecnologies. It features the following components:
 
 ## Overview
 
@@ -14,7 +14,7 @@ This repository contains a solution for a URL Shortener service, designed to han
 - **Kafka**: Used for asynchronous message passing between services.
 - **Redis**: Implemented for caching and fast retrieval of URL statistics, ensuring high performance.
 - **Prometheus**: Integrated for monitoring and metrics collection, allowing nearly real-time analysis of service performance.
-- **Kubernetes**: Used for orchestration and scaling, with each service deployed in its own pod and managed through a **LoadBalancer**.
+- **Kubernetes**: Inside the pdf document, it is explained how to make it posible to scale the arquitecture.
 
 ## Features
 
@@ -36,8 +36,8 @@ For more detailed information, including technology choices and justifications, 
 ## Setup Instructions
 
 1. Clone the repository
-2. Configure environment variables for MongoDB, Redis, Kafka, and Prometheus.
-3. Deploy using Kubernetes following the instructions in `deployment/k8s/`.
+2. Deploy docker-compose elements of kafka, prometheus, and redis.
+3. Configure environment variables the microservices to run and connect to the kafka, redis and prometheus instances.
 
 ---
 

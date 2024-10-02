@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface UrlRedirectService {
     Mono<UrlResponse> getOriginalUrl(String shortUrl);
-    void sendAccessEvent(UrlData event);
+    //Mono<Object> sendAccessEventReactive(UrlData event);
 }

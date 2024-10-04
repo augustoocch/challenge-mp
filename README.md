@@ -1,4 +1,4 @@
-# URL shorlinker
+# URL short-linker
 
 This repository contains a solution for a URL Shortener service, designed to handle requests in an asynchronicus way, and using top tecnologies. It features the following components:
 
@@ -24,10 +24,7 @@ This repository contains a solution for a URL Shortener service, designed to han
 - High availability ensured through Redis HA, Kafka clustering, and scalable microservices on Kubernetes.
 
 ## Deployment Architecture
-
-- **Kubernetes** manages service replication and scaling.
-- **LoadBalancer** routes traffic to the Gateway Service.
-- External services:
+  - Java with reactive and non blocking capabilities
   - **Prometheus** is secured through a VPN for metrics gathering.
   - **MongoDB** operates externally, allowing elastic scaling.
   

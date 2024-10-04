@@ -21,7 +21,7 @@ This repository contains a solution for a URL Shortener service, designed to han
 - URLs can be created, modified, enabled/disabled, and monitored.
 - Supports real-time access statistics.
 - Asynchronous communication between services ensures high throughput and minimal latency.
-- High availability ensured through Redis HA, Kafka clustering, and scalable microservices on Kubernetes.
+- Designed to use a High availability ensured through Redis HA, Kafka clustering, and scalable microservices on Kubernetes.
 
 ## Deployment Architecture
   - **Java** with reactive and non blocking capabilities

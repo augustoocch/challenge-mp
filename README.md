@@ -24,8 +24,8 @@ This repository contains a solution for a URL Shortener service, designed to han
 - High availability ensured through Redis HA, Kafka clustering, and scalable microservices on Kubernetes.
 
 ## Deployment Architecture
-  - Java with reactive and non blocking capabilities
-  - **Prometheus** is secured through a VPN for metrics gathering.
+  - **Java** with reactive and non blocking capabilities
+  - **Prometheus** can be put inside of k8s or outside protected with VPN
   - **MongoDB** operates externally, allowing elastic scaling.
   
 For more detailed information, including technology choices and justifications, refer to the attached PDF document.
